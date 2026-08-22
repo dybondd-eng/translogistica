@@ -9,8 +9,8 @@ const empty = {
   codigo: "",
   destinatario_nome: "",
   destinatario_telefone: "",
-  origem_cidade: "",
-  origem_estado: "",
+  origem_cidade: "DOURADOS",
+  origem_estado: "MS",
   destino_cidade: "",
   destino_estado: "",
   data_coleta: "",
@@ -33,7 +33,10 @@ export const EntregaFormDialog = ({ open, onClose, onSubmit, entrega }) => {
     }
   }, [open, entrega]);
 
-  const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+  const set = (k) => (e) => {
+    const v = e.target.value;
+    setForm((prev) => ({ ...prev, [k]: k === "status_atual" ? v : v.toUpperCase() }));
+  };
 
   const submit = async (e) => {
     e.preventDefault();
@@ -60,7 +63,7 @@ export const EntregaFormDialog = ({ open, onClose, onSubmit, entrega }) => {
   const field = (label, k, testid, type = "text") => (
     <div key={k}>
       <label className="label-caps text-zinc-400">{label}</label>
-      <input type={type} className={`mt-2 ${inputCls}`} value={form[k] || ""} onChange={set(k)} data-testid={testid} />
+      <input type={type} className={`mt-2 ${inputCls} ${type === "date" ? "" : "uppercase"}`} value={form[k] || ""} onChange={set(k)} data-testid={testid} />
     </div>
   );
 
@@ -104,7 +107,7 @@ export const EntregaFormDialog = ({ open, onClose, onSubmit, entrega }) => {
             <label className="label-caps text-zinc-400">Observação</label>
             <textarea
               rows={3}
-              className="mt-2 w-full border border-zinc-300 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#FF5A00] focus:ring-offset-2"
+              className="mt-2 w-full border border-zinc-300 bg-white p-3 text-sm uppercase outline-none focus:ring-2 focus:ring-[#FF5A00] focus:ring-offset-2"
               value={form.observacao || ""}
               onChange={set("observacao")}
               data-testid="form-observacao"
@@ -193,11 +196,11 @@ export const MovimentacaoDialog = ({ open, onClose, onSubmit, entrega }) => {
           <div>
             <label className="label-caps text-zinc-400">Cidade / local</label>
             <input
-              className={`mt-2 ${inputCls}`}
+              className={`mt-2 ${inputCls} uppercase`}
               value={form.local}
-              onChange={(e) => setForm({ ...form, local: e.target.value })}
+              onChange={(e) => setForm((p) => ({ ...p, local: e.target.value.toUpperCase() }))}
               data-testid="mov-local"
-              placeholder="São Paulo - SP"
+              placeholder="DOURADOS - MS"
             />
           </div>
           <div>
@@ -214,11 +217,11 @@ export const MovimentacaoDialog = ({ open, onClose, onSubmit, entrega }) => {
             <label className="label-caps text-zinc-400">Observação</label>
             <textarea
               rows={3}
-              className="mt-2 w-full border border-zinc-300 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#FF5A00] focus:ring-offset-2"
+              className="mt-2 w-full border border-zinc-300 bg-white p-3 text-sm uppercase outline-none focus:ring-2 focus:ring-[#FF5A00] focus:ring-offset-2"
               value={form.observacao}
-              onChange={(e) => setForm({ ...form, observacao: e.target.value })}
+              onChange={(e) => setForm((p) => ({ ...p, observacao: e.target.value.toUpperCase() }))}
               data-testid="mov-observacao"
-              placeholder="Mercadoria encaminhada para a unidade de destino."
+              placeholder="MERCADORIA ENCAMINHADA PARA A UNIDADE DE DESTINO."
             />
           </div>
 

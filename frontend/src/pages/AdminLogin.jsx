@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Truck, Lock, Loader2 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
@@ -8,8 +8,13 @@ export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, user, checking } = useAuth();
   const navigate = useNavigate();
+
+  if (checking) {
+    return <div className="flex min-h-screen items-center justify-center bg-zinc-950 text-zinc-400">Carregando...</div>;
+  }
+  if (user) return <Navigate to="/admin" replace />;
 
   const submit = async (e) => {
     e.preventDefault();
@@ -21,7 +26,7 @@ export default function AdminLogin() {
     setLoading(true);
     const res = await login(email.trim(), password);
     setLoading(false);
-    if (res.ok) navigate("/admin");
+    if (res.ok) navigate("/admin", { replace: true });
     else setError(res.error);
   };
 
