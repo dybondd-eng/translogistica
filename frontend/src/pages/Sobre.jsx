@@ -8,11 +8,36 @@ const MAPA = "https://static.prod-images.emergentagent.com/jobs/1628a03f-f17f-47
 const PARCEIROS = [
   { nome: "Braspress", tipo: "Carga fracionada", cor: "#C8102E" },
   { nome: "Jamef", tipo: "Rodoviário", cor: "#0057B8" },
-  { nome: "RTE Rodonaves", tipo: "Rodoviário", cor: "#E4002B" },
-  { nome: "Jadlog", tipo: "Encomendas", cor: "#E30613" },
-  { nome: "Total Express", tipo: "E-commerce", cor: "#0B3C8C" },
-  { nome: "J&T Express", tipo: "Encomendas", cor: "#D6001C" },
-  { nome: "Loggi", tipo: "Última milha", cor: "#00A5E0" },
+  {
+    nome: "RTE Rodonaves",
+    tipo: "Rodoviário",
+    cor: "#E4002B",
+    logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/n08zoxkw_images.png",
+  },
+  {
+    nome: "Jadlog",
+    tipo: "Encomendas",
+    cor: "#E30613",
+    logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/5dnqekt6_jadlog-logo-png_seeklogo-502850.png",
+  },
+  {
+    nome: "Total Express",
+    tipo: "E-commerce",
+    cor: "#0B3C8C",
+    logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/aiddtt8g_images%20%286%29.jpeg",
+  },
+  {
+    nome: "J&T Express",
+    tipo: "Encomendas",
+    cor: "#D6001C",
+    logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/dq6ewzk7_logo_null_qDwL70.jpg",
+  },
+  {
+    nome: "Loggi",
+    tipo: "Última milha",
+    cor: "#00A5E0",
+    logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/4q82rt7d_163acbc128e90ee023caf8481274c10a6d6f1d58.png",
+  },
   { nome: "Patrus Transportes", tipo: "Rodoviário", cor: "#0C6C3D" },
   { nome: "Alfa Transportes", tipo: "Rodoviário", cor: "#1B3A6B" },
 ];
@@ -90,12 +115,23 @@ export default function Sobre() {
                   <div
                     key={p.nome}
                     data-testid={`parceiro-${p.nome.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-                    className="flex h-20 flex-col items-center justify-center border border-zinc-200 bg-white px-3 text-center transition-all duration-200 hover:-translate-y-[2px] hover:border-zinc-900"
+                    className="flex h-24 flex-col items-center justify-center border border-zinc-200 bg-white px-4 text-center transition-all duration-200 hover:-translate-y-[2px] hover:border-zinc-900"
                   >
-                    <span className="font-display text-base font-black leading-none tracking-tight" style={{ color: p.cor }}>
-                      {p.nome}
-                    </span>
-                    <span className="mt-1.5 text-[10px] uppercase tracking-[0.15em] text-zinc-400">{p.tipo}</span>
+                    {p.logo ? (
+                      <img
+                        src={p.logo}
+                        alt={`Logo ${p.nome}`}
+                        title={p.nome}
+                        className="max-h-16 w-full object-contain"
+                      />
+                    ) : (
+                      <>
+                        <span className="font-display text-base font-black leading-none tracking-tight" style={{ color: p.cor }}>
+                          {p.nome}
+                        </span>
+                        <span className="mt-1.5 text-[10px] uppercase tracking-[0.15em] text-zinc-400">{p.tipo}</span>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
