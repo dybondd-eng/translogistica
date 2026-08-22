@@ -3,6 +3,19 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Boxes, Route, Users, TrendingUp } from "lucide-react";
 
 const IMG = "https://images.unsplash.com/photo-1627309366653-2dedc084cdf1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjB3YXJlaG91c2UlMjBsb2dpc3RpY3N8ZW58MHx8fHwxNzg3MzczMTc0fDA&ixlib=rb-4.1.0&q=85";
+const MAPA = "https://static.prod-images.emergentagent.com/jobs/1628a03f-f17f-475b-8e98-a5d3048fdfd3/images/784eb6ccaac0447e59dc6324aa80ddfb01f43b02e41749391e44be4c12b80e6b.jpeg";
+
+const PARCEIROS = [
+  { nome: "Braspress", tipo: "Carga fracionada", cor: "#C8102E" },
+  { nome: "Jamef", tipo: "Rodoviário", cor: "#0057B8" },
+  { nome: "RTE Rodonaves", tipo: "Rodoviário", cor: "#E4002B" },
+  { nome: "Jadlog", tipo: "Encomendas", cor: "#E30613" },
+  { nome: "Total Express", tipo: "E-commerce", cor: "#0B3C8C" },
+  { nome: "J&T Express", tipo: "Encomendas", cor: "#D6001C" },
+  { nome: "Loggi", tipo: "Última milha", cor: "#00A5E0" },
+  { nome: "Patrus Transportes", tipo: "Rodoviário", cor: "#0C6C3D" },
+  { nome: "Alfa Transportes", tipo: "Rodoviário", cor: "#1B3A6B" },
+];
 
 export default function Sobre() {
   return (
@@ -48,6 +61,50 @@ export default function Sobre() {
             <img src={IMG} alt="Centro de distribuição TransLog" className="h-full max-h-[80vh] w-full object-cover md:max-h-none" />
           </div>
         </div>
+
+        <section className="mt-20 md:mt-28" data-testid="cobertura-nacional">
+          <div className="grid gap-px border border-zinc-200 bg-zinc-200 lg:grid-cols-[1fr_1.15fr]">
+            <div className="flex items-center justify-center bg-white p-8 md:p-12">
+              <img
+                src={MAPA}
+                alt="Mapa do Brasil com a cobertura de entregas da TransLog"
+                className="w-full max-w-md object-contain"
+                data-testid="mapa-brasil"
+              />
+            </div>
+            <div className="bg-white p-8 md:p-12">
+              <p className="label-caps text-[#FF5A00]">Cobertura nacional</p>
+              <h2 className="mt-4 font-display text-3xl font-black leading-tight tracking-tight md:text-4xl">
+                Atendemos todas as cidades do Brasil.
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-zinc-600">
+                Não importa o destino: da capital ao interior, entregamos em todo o território nacional. Isso é
+                possível porque trabalhamos <strong className="text-zinc-950">em parceria com as melhores
+                transportadoras do Brasil</strong>, combinando a malha de cada uma para garantir o melhor prazo e o
+                melhor custo para a sua carga.
+              </p>
+
+              <p className="mt-10 label-caps text-zinc-400">Nossos parceiros</p>
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3" data-testid="parceiros-list">
+                {PARCEIROS.map((p) => (
+                  <div
+                    key={p.nome}
+                    data-testid={`parceiro-${p.nome.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+                    className="flex h-20 flex-col items-center justify-center border border-zinc-200 bg-white px-3 text-center transition-all duration-200 hover:-translate-y-[2px] hover:border-zinc-900"
+                  >
+                    <span className="font-display text-base font-black leading-none tracking-tight" style={{ color: p.cor }}>
+                      {p.nome}
+                    </span>
+                    <span className="mt-1.5 text-[10px] uppercase tracking-[0.15em] text-zinc-400">{p.tipo}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-xs text-zinc-400">
+                Marcas citadas pertencem às respectivas empresas parceiras.
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
       <SiteFooter />
     </div>
