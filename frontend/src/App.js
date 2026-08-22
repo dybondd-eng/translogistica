@@ -8,6 +8,7 @@ import Sobre from "@/pages/Sobre";
 import Contato from "@/pages/Contato";
 import AdminLogin from "@/pages/AdminLogin";
 import AdminDashboard from "@/pages/AdminDashboard";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 
 const ProtectedRoute = ({ children }) => {
   const { user, checking } = useAuth();
@@ -41,6 +42,7 @@ function App() {
             />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+          <WhatsAppFloat />
         </AuthProvider>
       </BrowserRouter>
     </div>
