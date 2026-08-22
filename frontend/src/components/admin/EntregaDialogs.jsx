@@ -57,8 +57,8 @@ export const EntregaFormDialog = ({ open, onClose, onSubmit, entrega }) => {
     if (!res?.ok) setError(res?.error || "Erro ao salvar.");
   };
 
-  const F = ({ label, k, type = "text", testid }) => (
-    <div>
+  const field = (label, k, testid, type = "text") => (
+    <div key={k}>
       <label className="label-caps text-zinc-400">{label}</label>
       <input type={type} className={`mt-2 ${inputCls}`} value={form[k] || ""} onChange={set(k)} data-testid={testid} />
     </div>
@@ -75,16 +75,16 @@ export const EntregaFormDialog = ({ open, onClose, onSubmit, entrega }) => {
 
         <form onSubmit={submit} className="space-y-5">
           <div className="grid gap-4 sm:grid-cols-2">
-            <F label="Código da entrega" k="codigo" testid="form-codigo" />
-            <F label="Transportadora" k="transportadora" testid="form-transportadora" />
-            <F label="Nome do destinatário" k="destinatario_nome" testid="form-destinatario" />
-            <F label="Telefone do destinatário" k="destinatario_telefone" testid="form-telefone" />
-            <F label="Cidade de origem" k="origem_cidade" testid="form-origem-cidade" />
-            <F label="Estado de origem" k="origem_estado" testid="form-origem-estado" />
-            <F label="Cidade de destino" k="destino_cidade" testid="form-destino-cidade" />
-            <F label="Estado de destino" k="destino_estado" testid="form-destino-estado" />
-            <F label="Data de coleta" k="data_coleta" type="date" testid="form-data-coleta" />
-            <F label="Previsão de entrega" k="previsao_entrega" type="date" testid="form-previsao" />
+            {field("Código da entrega", "codigo", "form-codigo")}
+            {field("Transportadora", "transportadora", "form-transportadora")}
+            {field("Nome do destinatário", "destinatario_nome", "form-destinatario")}
+            {field("Telefone do destinatário", "destinatario_telefone", "form-telefone")}
+            {field("Cidade de origem", "origem_cidade", "form-origem-cidade")}
+            {field("Estado de origem", "origem_estado", "form-origem-estado")}
+            {field("Cidade de destino", "destino_cidade", "form-destino-cidade")}
+            {field("Estado de destino", "destino_estado", "form-destino-estado")}
+            {field("Data de coleta", "data_coleta", "form-data-coleta", "date")}
+            {field("Previsão de entrega", "previsao_entrega", "form-previsao", "date")}
             <div>
               <label className="label-caps text-zinc-400">Status atual</label>
               <select
@@ -98,7 +98,7 @@ export const EntregaFormDialog = ({ open, onClose, onSubmit, entrega }) => {
                 ))}
               </select>
             </div>
-            <F label="Localização atual" k="localizacao_atual" testid="form-localizacao" />
+            {field("Localização atual", "localizacao_atual", "form-localizacao")}
           </div>
           <div>
             <label className="label-caps text-zinc-400">Observação</label>

@@ -1,0 +1,26 @@
+{
+  "summary": "Iteration 2 focused on regression-verifying the admin input focus bug fix in EntregaDialogs.jsx (F component recreated per render → replaced with inline `field()` helper). Executed Playwright end-to-end scenarios char-by-char on all admin form inputs, verified focus never moved off the active element and final values equal typed strings. Also validated full CRUD (create → row visible → status update → visible on public /rastrear → edit existing → revert → delete), new admin credentials, and WhatsApp floating button on login/admin/public pages.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Admin dialogs (from iter 1, still present)", "issues": ["Datas usam input type=date nativo, sem Calendar do shadcn", "DialogContent warns 'Missing Description or aria-describedby'"]}
+    ]
+  },
+  "test_report_links": ["/app/backend/tests/backend_test.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Fix confirmado: em EntregaDialogs.jsx a função `field(label, k, testid, type)` retorna JSX inline dentro do componente pai, preservando a identidade dos <input> entre renders — o React não desmonta o input a cada onChange, foco preservado. Correção correta e minimalista.",
+    "MovimentacaoDialog já usava inputs inline (não tinha o bug) — checado e validado por char-by-char typing.",
+    "Sugestão: extrair `set(k)` para useCallback e usar functional setState `setForm(prev => ({...prev, [k]: v}))` para evitar re-render dependencies e potenciais stale closures em futuros usos."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "not retested (per request)", "frontend": "100% (7/7 scenarios)"},
+  "test_credentials": "translog67ms@gmail.com / ed460109 (from /app/memory/test_credentials.md) — login OK",
+  "seed_data_creation": "Criada entrega TESTFOCO01 e removida ao final via delete-confirm. TL2026001BR destinatário editado e revertido para 'Maria Silva Souza'.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Bug de perda de foco nos inputs admin RESOLVIDO e regredido com sucesso. Todos os data-testid usados: nova-entrega-button, form-codigo, form-destinatario, form-origem-cidade, form-origem-estado, form-destino-cidade, form-destino-estado, form-telefone, form-localizacao, form-observacao, form-submit, status-{codigo}, mov-local, mov-observacao, mov-submit, edit-{codigo}, delete-{codigo}, delete-confirm, whatsapp-float. Não é necessário retestar backend (15/15 na iteração 1).",
+  "rca of the issue": "RCA: dentro de EntregaFormDialog o componente interno `F` era declarado como função na linha de retorno do componente pai, o que significa que a cada render o React via um novo tipo de componente e desmontava/remontava o <input>, causando perda de foco após cada keystroke. Fix aplicado pelo main agent: substituir `F` por uma função `field()` que retorna JSX literal (não um componente), reutilizando o mesmo elemento entre renders. Verificado: char-by-char typing em form-codigo, form-destinatario, form-origem-cidade, form-observacao mantém focus_ok=True e valor final correto."
+}
