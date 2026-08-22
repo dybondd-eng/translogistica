@@ -19,7 +19,7 @@ export const SiteFooter = () => (
       <div>
         <p className="label-caps text-zinc-500">Contato</p>
         <ul className="mt-5 space-y-3 text-sm">
-          <li className="flex items-center gap-3"><Phone size={15} className="text-[#FF5A00]" /> (11) 4002-8922</li>
+          <li className="flex items-center gap-3"><Phone size={15} className="text-[#FF5A00]" /> (67) 99208-5655</li>
           <li className="flex items-center gap-3"><Mail size={15} className="text-[#FF5A00]" /> contato@translog.com.br</li>
           <li className="flex items-center gap-3"><MapPin size={15} className="text-[#FF5A00]" /> São Paulo - SP</li>
         </ul>

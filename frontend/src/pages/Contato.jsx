@@ -71,7 +71,7 @@ export default function Contato() {
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2">
               {[
-                { icon: Phone, t: "Central de atendimento", d: "(11) 4002-8922" },
+                { icon: Phone, t: "Central de atendimento", d: "(67) 99208-5655" },
                 { icon: Mail, t: "E-mail", d: "contato@translog.com.br" },
                 { icon: MapPin, t: "Matriz", d: "Av. das Nações, 1200 - São Paulo/SP" },
                 { icon: Clock, t: "Horário", d: "Seg a Sex, 08h - 18h" },
