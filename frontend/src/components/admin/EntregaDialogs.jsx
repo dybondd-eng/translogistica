@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { STATUSES } from "@/lib/api";
+import { api, STATUSES } from "@/lib/api";
 
 const inputCls =
   "h-12 w-full border border-zinc-300 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#FF5A00] focus:ring-offset-2";
@@ -30,6 +30,12 @@ export const EntregaFormDialog = ({ open, onClose, onSubmit, entrega }) => {
     if (open) {
       setError("");
       setForm(entrega ? { ...empty, ...entrega } : empty);
+      if (!entrega) {
+        api
+          .get("/admin/proximo-codigo")
+          .then(({ data }) => setForm((prev) => ({ ...prev, codigo: data.codigo })))
+          .catch(() => {});
+      }
     }
   }, [open, entrega]);
 
@@ -78,7 +84,7 @@ export const EntregaFormDialog = ({ open, onClose, onSubmit, entrega }) => {
 
         <form onSubmit={submit} className="space-y-5">
           <div className="grid gap-4 sm:grid-cols-2">
-            {field("Código da entrega", "codigo", "form-codigo")}
+            {field("Código da entrega (gerado automaticamente)", "codigo", "form-codigo")}
             {field("Transportadora", "transportadora", "form-transportadora")}
             {field("Nome do destinatário", "destinatario_nome", "form-destinatario")}
             {field("Telefone do destinatário", "destinatario_telefone", "form-telefone")}

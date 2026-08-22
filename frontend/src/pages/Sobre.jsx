@@ -6,13 +6,23 @@ const IMG = "https://images.unsplash.com/photo-1627309366653-2dedc084cdf1?crop=e
 const MAPA = "https://static.prod-images.emergentagent.com/jobs/1628a03f-f17f-475b-8e98-a5d3048fdfd3/images/784eb6ccaac0447e59dc6324aa80ddfb01f43b02e41749391e44be4c12b80e6b.jpeg";
 
 const PARCEIROS = [
-  { nome: "Braspress", tipo: "Carga fracionada", cor: "#C8102E" },
-  { nome: "Jamef", tipo: "Rodoviário", cor: "#0057B8" },
+  {
+    nome: "Braspress",
+    tipo: "Carga fracionada",
+    cor: "#C8102E",
+    logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/yqrs3e66_images%20%284%29.png",
+  },
+  {
+    nome: "Jamef",
+    tipo: "Rodoviário",
+    cor: "#0057B8",
+    logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/8vxo50nc_images%20%281%29.png",
+  },
   {
     nome: "RTE Rodonaves",
     tipo: "Rodoviário",
     cor: "#E4002B",
-    logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/n08zoxkw_images.png",
+    logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/f8qj8o3h_images%20%283%29.png",
   },
   {
     nome: "Jadlog",
@@ -38,8 +48,8 @@ const PARCEIROS = [
     cor: "#00A5E0",
     logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/4q82rt7d_163acbc128e90ee023caf8481274c10a6d6f1d58.png",
   },
-  { nome: "Patrus Transportes", tipo: "Rodoviário", cor: "#0C6C3D" },
-  { nome: "Alfa Transportes", tipo: "Rodoviário", cor: "#1B3A6B" },
+  { nome: "Patrus Transportes", tipo: "Rodoviário", cor: "#0C6C3D", logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/tsmygj0f_NOVA-LOGO-PATRUS.webp" },
+  { nome: "Alfa Transportes", tipo: "Rodoviário", cor: "#1B3A6B", logo: "https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/ghl2vm7c_images%20%282%29.png" },
 ];
 
 export default function Sobre() {

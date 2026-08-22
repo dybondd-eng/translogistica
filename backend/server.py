@@ -255,6 +255,15 @@ async def stats(user: dict = Depends(get_current_user)):
     return {"total": total, "por_status": counts}
 
 
+@api.get("/admin/proximo-codigo")
+async def proximo_codigo(user: dict = Depends(get_current_user)):
+    prefixo = f"TL{datetime.now(timezone.utc).year}"
+    seq = await db.entregas.count_documents({"codigo": {"$regex": f"^{prefixo}"}}) + 1
+    while await db.entregas.find_one({"codigo": f"{prefixo}{seq:04d}BR"}):
+        seq += 1
+    return {"codigo": f"{prefixo}{seq:04d}BR"}
+
+
 @api.get("/admin/entregas", response_model=List[Entrega], response_model_by_alias=False)
 async def list_entregas(search: str = "", user: dict = Depends(get_current_user)):
     query = {}
