@@ -51,7 +51,7 @@ export default function AdminLogin() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               data-testid="admin-login-email"
-              placeholder="admin@translog.com.br"
+              placeholder="translog67ms@gmail.com"
             />
           </div>
           <div>
