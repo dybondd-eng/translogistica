@@ -1,0 +1,43 @@
+{
+  "summary": "Bateria completa de testes backend (pytest, 15/15 passando) e frontend (Playwright) da app TransLog. Cobertura: rastreio público (código válido, inválido, mask do nome), páginas /sobre e /contato, formulário de contato (validação + envio mock), auth JWT (login sucesso, senha errada, redirect /admin, /api/admin sem token = 401), dashboard (5 cards + tabela), CRUD completo de entregas (criar, código duplicado 409, editar, visualizar, excluir), adicionar movimentação e refletir no /rastrear público, busca admin por código e destinatário, e responsividade mobile (390x844). Um bug crítico de serialização (backend retornava `_id` em vez de `id` quebrando edit/delete/mov do frontend) foi identificado e corrigido pelo testing agent.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "CORS", "issue": "CORS_ORIGINS='*' combinado com allow_credentials=True. Navegadores rejeitam cookies com origem curinga. Como o frontend usa Bearer token via Authorization header, o fluxo atual funciona, mas o cookie httpOnly setado no login é inutilizável e set-cookie via SameSite=None sem origem explícita é frágil."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Dialog de cadastro/edição", "issues": ["Datas usam input type=date nativo (mm/dd/yyyy) em vez do Calendar do shadcn; visualmente inconsistente com o restante da UI e pouco intuitivo para pt-BR"]},
+      {"screen": "DialogContent (admin)", "issues": ["Warnings de acessibilidade no console: 'Missing Description or aria-describedby for DialogContent' — adicionar <DialogDescription> ou aria-describedby"]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Considerar substituir input type=date pelo Calendar do shadcn e formato dd/mm/yyyy",
+    "Adicionar DialogDescription (ou aria-describedby) em EntregaFormDialog e MovimentacaoDialog para eliminar warnings de a11y",
+    "Definir CORS_ORIGINS com a origem específica do frontend (evitar '*' com allow_credentials=True)"
+  ],
+  "critical_code_review_comments": [
+    "BUG CORRIGIDO: FastAPI serializava Entrega com by_alias=True (default), retornando `_id` no JSON. O frontend (AdminDashboard.jsx) usa `e.id` para PUT/DELETE/movimentacoes — o que resultaria em requisições para /admin/entregas/undefined. Corrigido adicionando `response_model_by_alias=False` em todas as rotas /api/admin/entregas* (list, get, post, put, movimentacoes).",
+    "seed(): idempotente ok (cria índices, atualiza senha do admin se hash diverge). Recomendo também idempotência das entregas de exemplo (hoje só insere se collection vazia — comportamento aceitável)",
+    "server.py tem 490 linhas — ainda dentro do limite, mas seed() ocupa ~100 linhas com dados hardcoded; considerar mover para /app/backend/seed_data.py",
+    "mask_name expõe apenas iniciais — bom para privacidade pública"
+  ],
+  "updated_files": [
+    "/app/backend/server.py (adicionado response_model_by_alias=False nas rotas admin de entregas)",
+    "/app/backend/tests/backend_test.py (nova suíte pytest com 15 testes)"
+  ],
+  "success_rate": {"backend": "100% (15/15)", "frontend": "100% dos fluxos críticos cobertos"},
+  "test_credentials": "admin@translog.com.br / Translog@2026 (de /app/memory/test_credentials.md)",
+  "seed_data_creation": "Nenhum. Utilizadas entregas seed do backend (TL2026001BR..TL2026004BR). Entregas TEST* criadas durante os testes foram todas removidas via DELETE.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Frontend usa `entrega.id` — backend deve serializar com id (não _id). Se editar as rotas admin, mantenha response_model_by_alias=False. Suíte pytest em /app/backend/tests/backend_test.py cobre auth, público, CRUD, movimentação e busca; roda em ~3s.",
+  "rca of the issue": "RCA: FastAPI por default serializa response_model com by_alias=True. Como o modelo Entrega tem `id: ... = Field(alias='_id')`, o JSON de retorno usava a chave `_id`. O frontend, entretanto, referencia `entrega.id` para montar URLs de PUT/DELETE/movimentações. Consequência: cliques em editar/excluir/atualizar status resultariam em requisição para `/api/admin/entregas/undefined` → 404. Reprodução: fazer POST /api/admin/entregas e inspecionar body — chave era `_id`. Mitigação aplicada: response_model_by_alias=False em todas as rotas /api/admin/entregas*. Confirmado com pytest test_crud_full_flow e testes Playwright de edit/delete/movimentação."
+}

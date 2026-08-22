@@ -1,0 +1,116 @@
+{
+  "project_name": "TransLog",
+  "theme": "Industrial Precision",
+  "emotional_archetype": "Swiss & High-Contrast (Archetype 4) + The Performance Pro (Archetype 2)",
+  "vibe": "Authority, Clarity, Speed, and Technical Precision",
+  "typography": {
+    "fonts": {
+      "headings": "'Outfit', sans-serif",
+      "body": "'IBM Plex Sans', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "rules": {
+      "heading_scale": "fluid text-4xl sm:text-5xl lg:text-6xl maximum for heroes",
+      "letter_spacing": "tracking-tight for headings > 32px, tracking-[0.2em] for uppercase labels",
+      "banned_fonts": ["Inter", "Roboto", "Open Sans", "Lato"],
+      "weights": "Use font-light for elegance, font-black for impact. Avoid generic bolding."
+    }
+  },
+  "colors": {
+    "light": {
+      "background": "#F4F4F5",
+      "surface": "#FFFFFF",
+      "border": "#E4E4E7",
+      "text_primary": "#09090B",
+      "text_muted": "#71717A",
+      "primary": "#FF5A00",
+      "primary_hover": "#E04F00",
+      "success": "#10B981",
+      "warning": "#F59E0B"
+    },
+    "dark": {
+      "background": "#09090B",
+      "surface": "#18181B",
+      "border": "#27272A",
+      "text_primary": "#FAFAFA",
+      "text_muted": "#A1A1AA",
+      "primary": "#FF5A00",
+      "primary_hover": "#FF7A33",
+      "success": "#34D399",
+      "warning": "#FBBF24"
+    },
+    "rules": {
+      "neutral_tint": "Greys must have a slight cool tint (Zinc scale works well)",
+      "contrast": "Always maintain WCAG AA minimum. Ensure white text on #FF5A00 meets contrast (use darker shade for hover).",
+      "gradients": "No full-screen generic gradients. Use subtle grain textures instead."
+    }
+  },
+  "visual_enhancers": {
+    "surfaces": {
+      "dashboard_cards": "Grid Borders (Technical Look). Use border-collapse layout or 1px subtle borders on right/bottom of grid items. No shadows for admin cards.",
+      "tracking_timeline": "The 'Tracing Beam'. Implement a glowing gradient line travelling vertically connecting the timeline dots to show active transport status.",
+      "header": "Crystal Glass variant if content scrolls under it: backdrop-blur-xl bg-white/70 with 1px inner border."
+    },
+    "textures": "Add a subtle noise/grain texture overlay to the hero section background to remove 'digital flatness'.",
+    "corners": "Sharp edges or minimal rounded-sm (4px max) to maintain a rigid, structural, 'cargo' aesthetic."
+  },
+  "layouts_and_grids": {
+    "marketing_pages": "Mode A: The Tetris Grid. Asymmetric overlapping panels. Ensure ample negative space. Container p-8 to p-12.",
+    "dashboard_pages": "Mode B: High Density Grid. grid-cols-1 md:grid-cols-4. Every pixel utilized, h-full on children.",
+    "spacing": "Use generous Tailwind spacing values. e.g., p-8 to p-16 for containers. Gap-8 to gap-12 for marketing.",
+    "image_constraints": "max-h-[80vh] md:max-h-none for mobile."
+  },
+  "components": {
+    "navigation": "Fixed header with solid or glassmorphism background. Do not use fully transparent. Logo, links (Início, Rastrear, Sobre, Contato). Desktop links must be visible.",
+    "tracking_input_hero": "Massive input field, sharp corners, high-contrast 'Rastrear entrega' button. Focus state must ring-2 ring-offset-2 ring-[#FF5A00].",
+    "timeline_6_steps": "Vertical timeline. Steps: 'Pedido recebido', 'Mercadoria coletada', 'Em transporte', 'Chegou à unidade de destino', 'Saiu para entrega', 'Entregue'. Active state dot should pulse with ring animation.",
+    "dashboard_metrics": "5 semantic cards. Large bold numbers, small supporting labels. Flat design with 1px borders.",
+    "data_tables": "Shadcn based table. Needs search, row actions (Edit/Update/Delete). Left align table data except numerical metrics.",
+    "toasts": "Use Sonner component for all CRUD success/error feedback."
+  },
+  "motion": {
+    "page_scroll": "Implement @studio-freight/lenis for smooth scrolling momentum.",
+    "hover_states": "Crisp, fast transitions: transition-all duration-200 ease-out. Scale buttons slightly -translate-y-[2px].",
+    "stagger": "List items (like timeline steps or table rows) must enter with a staggered fade-in animation using Framer Motion."
+  },
+  "accessibility": {
+    "test_ids": "All interactive elements MUST have data-testid attributes (e.g., 'rastrear-button', 'admin-login-submit').",
+    "focus": "focus:ring-2 focus:ring-primary focus:ring-offset-2 for all inputs and buttons."
+  },
+  "media": {
+    "icons": "Use Phosphor Icons (yarn add @phosphor-icons/react) for sharp, technical duotone or bold weights.",
+    "image_urls": {
+      "hero_background": {
+        "url": "https://images.pexels.com/photos/5410923/pexels-photo-5410923.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Cargo truck travelling on highway at sunset. Use with bg-black/40 overlay to ensure text contrast."
+      },
+      "about_warehouse": {
+        "url": "https://images.unsplash.com/photo-1627309366653-2dedc084cdf1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjB3YXJlaG91c2UlMjBsb2dpc3RpY3N8ZW58MHx8fHwxNzg3MzczMTc0fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Tall blue metal shelving in warehouse. Use in 'Sobre Nós' section to show logistics capacity."
+      },
+      "contact_support": {
+        "url": "https://images.pexels.com/photos/8867417/pexels-photo-8867417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Young professional woman with headset. Use for 'Contato' section."
+      }
+    }
+  },
+  "instructions_to_main_agent": [
+    "Build the application using React (.js/.jsx files) + Tailwind CSS + Shadcn UI.",
+    "DO NOT use TypeScript (.tsx). Convert any Shadcn components to Javascript (.js/.jsx) upon installation.",
+    "Implement 'Início', 'Rastrear Pedido', 'Sobre Nós', 'Contato' on the main marketing flow.",
+    "Implement an '/admin' route protected by a simple login mock leading to the Dashboard.",
+    "Mock the backend with a context or state manager to simulate CRUD operations on 'Entregas' and 'Movimentações'.",
+    "Admin Dashboard must have 5 metrics cards: Total, Aguardando coleta, Em transporte, Saiu para entrega, Entregues.",
+    "Admin must feature a data table displaying recent deliveries with actions: Visualizar, Editar, Atualizar status, Excluir.",
+    "The Tracking Timeline is the star UI element. Use framer-motion for the timeline dots and a vertical line connecting them."
+  ],
+  "universal_guidelines_for_main_agent": [
+    "Do not converge toward generic AI outputs. Avoid simplistic gradients and centered blobs.",
+    "Do not apply 'transition: all' in global CSS. Use specific properties.",
+    "Do not center-align the main App container (.App { text-align: center; } is FORBIDDEN).",
+    "Prioritize optical alignment over geometric alignment.",
+    "Use 2-3x more spacing (Tailwind p-8 to p-16) to make the UI look expensive.",
+    "Ensure the UI works flawlessly across mobile and desktop. Make inputs thumb-friendly.",
+    "Never use placeholder text for images. Use the provided URLs."
+  ]
+}
