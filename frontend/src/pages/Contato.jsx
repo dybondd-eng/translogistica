@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 
 const IMG = "https://images.pexels.com/photos/8867417/pexels-photo-8867417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
 
@@ -67,13 +67,22 @@ export default function Contato() {
               >
                 Enviar mensagem
               </button>
+              <a
+                href="https://wa.me/5567992085655"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="contato-whatsapp"
+                className="flex h-14 items-center justify-center gap-3 bg-[#25D366] font-display font-bold uppercase tracking-wider text-zinc-950 transition-all duration-200 hover:-translate-y-[2px] hover:bg-[#1EBE5B] sm:ml-3 sm:inline-flex sm:w-auto sm:px-8"
+              >
+                <MessageCircle size={18} /> Falar no WhatsApp
+              </a>
             </form>
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2">
               {[
                 { icon: Phone, t: "Central de atendimento", d: "(67) 99208-5655" },
-                { icon: Mail, t: "E-mail", d: "contato@translog.com.br" },
-                { icon: MapPin, t: "Matriz", d: "Av. das Nações, 1200 - São Paulo/SP" },
+                { icon: Mail, t: "E-mail", d: "translog67ms@gmail.com" },
+                { icon: MapPin, t: "Matriz", d: "R. Danúbio Azul, 88 - Jardim Noroeste, Campo Grande - MS, 79045-232" },
                 { icon: Clock, t: "Horário", d: "Seg a Sex, 08h - 18h" },
               ].map(({ icon: Icon, t, d }) => (
                 <div key={t}>
