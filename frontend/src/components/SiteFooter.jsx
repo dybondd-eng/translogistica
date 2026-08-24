@@ -21,7 +21,7 @@ export const SiteFooter = () => (
         <ul className="mt-5 space-y-3 text-sm">
           <li className="flex items-center gap-3"><Phone size={15} className="text-[#FF5A00]" /> (67) 99208-5655</li>
           <li className="flex items-center gap-3"><Mail size={15} className="text-[#FF5A00]" /> translog67ms@gmail.com</li>
-          <li className="flex items-start gap-3"><MapPin size={15} className="mt-1 shrink-0 text-[#FF5A00]" /> R. Danúbio Azul, 88 - Jardim Noroeste, Campo Grande - MS, 79045-232</li>
+          <li className="flex items-start gap-3"><MapPin size={15} className="mt-1 shrink-0 text-[#FF5A00]" /> BR-163, 4400 - Dourados, MS, 79842-000</li>
         </ul>
         <a
           href="https://wa.me/5567992085655"

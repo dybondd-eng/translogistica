@@ -67,10 +67,6 @@ export default function Home() {
               <Search size={20} /> Rastrear entrega
             </button>
           </motion.form>
-
-          <p className="mt-4 font-mono text-xs text-zinc-400">
-            Códigos de exemplo: TL2026001BR · TL2026002BR · TL2026004BR
-          </p>
         </div>
       </section>
 

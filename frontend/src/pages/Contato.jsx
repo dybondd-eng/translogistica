@@ -82,7 +82,7 @@ export default function Contato() {
               {[
                 { icon: Phone, t: "Central de atendimento", d: "(67) 99208-5655" },
                 { icon: Mail, t: "E-mail", d: "translog67ms@gmail.com" },
-                { icon: MapPin, t: "Matriz", d: "R. Danúbio Azul, 88 - Jardim Noroeste, Campo Grande - MS, 79045-232" },
+                { icon: MapPin, t: "Matriz", d: "BR-163, 4400 - Dourados, MS, 79842-000" },
                 { icon: Clock, t: "Horário", d: "Seg a Sex, 08h - 18h" },
               ].map(({ icon: Icon, t, d }) => (
                 <div key={t}>
