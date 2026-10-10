@@ -55,7 +55,7 @@ export default function Home() {
             <input
               value={codigo}
               onChange={(e) => setCodigo(e.target.value)}
-              placeholder="Ex.: TL2026001BR"
+              placeholder="Ex.: TL20260001BR"
               data-testid="tracking-code-input"
               className="h-16 w-full flex-1 border border-white/20 bg-white/95 px-5 font-mono text-lg uppercase tracking-wider text-zinc-950 outline-none placeholder:normal-case placeholder:tracking-normal placeholder:text-zinc-400 focus:ring-2 focus:ring-[#FF5A00] focus:ring-offset-2 focus:ring-offset-zinc-950"
             />
