@@ -1,16 +1,16 @@
-import { Truck, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 
 export const SiteFooter = () => (
   <footer className="mt-24 border-t border-zinc-800 bg-zinc-950 text-zinc-400">
     <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3 md:px-10">
       <div>
         <div className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center bg-[#FF5A00] text-white">
-            <Truck size={20} />
-          </span>
-          <span className="font-display text-lg font-black text-white">
-            Trans<span className="text-[#FF5A00]">Log</span>
-          </span>
+          <img
+            src="https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/5cc1b7129a9bbe83_file_00000000e538820eb41137dcd12a9d0d.webp"
+            alt="TransLogistica Transportes e Logística"
+            className="h-12 w-auto bg-white px-3 py-2 object-contain"
+            data-testid="footer-logo-img"
+          />
         </div>
         <p className="mt-5 max-w-xs text-sm leading-relaxed">
           Transportes e logística com precisão industrial. Cobertura nacional, rastreamento em tempo real.
@@ -41,7 +41,7 @@ export const SiteFooter = () => (
       </div>
     </div>
     <div className="border-t border-zinc-900 px-5 py-6 text-center text-xs md:px-10">
-      © {new Date().getFullYear()} TransLog Transportes. Todos os direitos reservados.
+      © {new Date().getFullYear()} TransLogistica Transportes. Todos os direitos reservados.
     </div>
   </footer>
 );

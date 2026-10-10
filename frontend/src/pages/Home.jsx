@@ -99,7 +99,7 @@ export default function Home() {
             data-testid="cta-contato"
             className="flex items-center gap-3 bg-[#FF5A00] px-8 py-4 font-display font-bold uppercase tracking-wider text-white transition-all duration-200 hover:-translate-y-[2px] hover:bg-[#E04F00]"
           >
-            <Truck size={18} /> Falar com a TransLog
+            <Truck size={18} /> Falar com a TransLogistica
           </a>
         </div>
       </section>

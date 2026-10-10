@@ -45,7 +45,7 @@ export default function AdminLogin() {
         </Link>
 
         <h1 className="mt-10 font-display text-3xl font-black tracking-tight text-white">Área administrativa</h1>
-        <p className="mt-3 text-sm text-zinc-400">Acesso restrito à equipe TransLog.</p>
+        <p className="mt-3 text-sm text-zinc-400">Acesso restrito à equipe TransLogistica.</p>
 
         <form onSubmit={submit} className="mt-8 space-y-4" data-testid="admin-login-form">
           <div>

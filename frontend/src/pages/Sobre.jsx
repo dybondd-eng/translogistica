@@ -65,7 +65,7 @@ export default function Sobre() {
         <div className="mt-14 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div className="space-y-6 text-base leading-relaxed text-zinc-600">
             <p>
-              A <strong className="text-zinc-950">TransLog</strong> é uma transportadora especializada em cargas
+              A <strong className="text-zinc-950">TransLogistica</strong> é uma transportadora especializada em cargas
               fracionadas e dedicadas, com operação rodoviária integrada e unidades estratégicas nas principais
               rotas do país.
             </p>
@@ -93,7 +93,7 @@ export default function Sobre() {
             </div>
           </div>
           <div className="relative">
-            <img src={IMG} alt="Centro de distribuição TransLog" className="h-full max-h-[80vh] w-full object-cover md:max-h-none" />
+            <img src={IMG} alt="Centro de distribuição TransLogistica" className="h-full max-h-[80vh] w-full object-cover md:max-h-none" />
           </div>
         </div>
 
@@ -102,7 +102,7 @@ export default function Sobre() {
             <div className="flex items-center justify-center bg-white p-8 md:p-12">
               <img
                 src={MAPA}
-                alt="Mapa do Brasil com a cobertura de entregas da TransLog"
+                alt="Mapa do Brasil com a cobertura de entregas da TransLogistica"
                 className="w-full max-w-md object-contain"
                 data-testid="mapa-brasil"
               />

@@ -116,11 +116,12 @@ export default function AdminDashboard() {
       <header className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4 md:px-10">
           <Link to="/" className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center bg-[#FF5A00] text-white"><Truck size={19} /></span>
-            <span className="font-display text-lg font-black text-white">
-              Trans<span className="text-[#FF5A00]">Log</span>
-              <span className="ml-3 label-caps text-zinc-500">Painel</span>
-            </span>
+            <img
+              src="https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/5cc1b7129a9bbe83_file_00000000e538820eb41137dcd12a9d0d.webp"
+              alt="TransLogistica"
+              className="h-10 w-auto bg-white px-2 py-1 object-contain"
+            />
+            <span className="label-caps text-zinc-500">Painel</span>
           </Link>
           <div className="flex items-center gap-4">
             <span className="hidden text-sm text-zinc-400 sm:inline" data-testid="admin-user-email">{user?.email}</span>

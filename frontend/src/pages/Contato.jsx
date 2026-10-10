@@ -26,7 +26,7 @@ export default function Contato() {
       <SiteHeader />
       <div className="mx-auto max-w-7xl px-5 py-12 md:px-10 md:py-20">
         <p className="label-caps text-[#FF5A00]">Contato</p>
-        <h1 className="mt-4 font-display text-4xl font-black tracking-tight sm:text-5xl">Fale com a TransLog</h1>
+        <h1 className="mt-4 font-display text-4xl font-black tracking-tight sm:text-5xl">Fale com a TransLogistica</h1>
 
         <div className="mt-12 grid gap-px bg-zinc-200 lg:grid-cols-2">
           <div className="bg-white p-8 md:p-12">
@@ -94,7 +94,7 @@ export default function Contato() {
             </div>
           </div>
           <div className="min-h-[320px] bg-white">
-            <img src={IMG} alt="Atendimento TransLog" className="h-full w-full object-cover" />
+            <img src={IMG} alt="Atendimento TransLogistica" className="h-full w-full object-cover" />
           </div>
         </div>
       </div>

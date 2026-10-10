@@ -15,12 +15,12 @@ export const SiteHeader = () => {
     <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10">
         <Link to="/" className="flex items-center gap-3" data-testid="logo-link">
-          <span className="flex h-10 w-10 items-center justify-center bg-[#FF5A00] text-white">
-            <Truck size={22} strokeWidth={2.4} />
-          </span>
-          <span className="font-display text-xl font-black tracking-tight text-zinc-950">
-            Trans<span className="text-[#FF5A00]">Log</span>
-          </span>
+          <img
+            src="https://customer-assets-wrfwihn1.emergentagent.net/job_cargo-monitor-76/artifacts/5cc1b7129a9bbe83_file_00000000e538820eb41137dcd12a9d0d.webp"
+            alt="TransLogistica Transportes e Logística"
+            className="h-10 w-auto object-contain md:h-12"
+            data-testid="logo-img"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

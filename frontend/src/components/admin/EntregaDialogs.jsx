@@ -18,7 +18,7 @@ const empty = {
   status_atual: STATUSES[0],
   localizacao_atual: "",
   observacao: "",
-  transportadora: "TransLog",
+  transportadora: "TRANSLOGISTICA",
 };
 
 export const EntregaFormDialog = ({ open, onClose, onSubmit, entrega }) => {
